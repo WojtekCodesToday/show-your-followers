@@ -13,7 +13,8 @@ var html_download_json = document.getElementById("json");
 var html_downloads = document.getElementById("downloads");
 var html_loading = document.getElementById("loading");
 var html_infos = document.getElementById("infos");
-var html_preview = document.getElementById("preview")
+var html_preview = document.getElementById("preview");
+var show_list = document.getElementById("show");
 
 //other variables
 var valid_name = /^[\w-]{3,20}$/;
@@ -72,11 +73,14 @@ function cancel(){
   html_infos.style.display = "inline-block"
 };
 
-
+function showList(){
+  html_preview.style.display = "none";
+  show_list.innerText = RESULT.slice(0,1000000).join(", ");
+}
 function ready(user){
   reset();
   html_downloads.style.display = "inline-block";
-  html_preview.innerText = RESULT.slice(0,50).join(", ")
+  html_preview.innerText = RESULT.slice(0,50).join(", ");
   download(`${user}-followers.txt`,RESULT.join("\n"),html_download_txt);
   download(`${user}-followers.csv`,RESULT.join(","),html_download_csv);
   download(`${user}-followers.json`,JSON.stringify(RESULT),html_download_json);

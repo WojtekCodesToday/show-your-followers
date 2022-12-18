@@ -49,7 +49,7 @@ async function getCount(user,pages){
     if(pages*40 < count){count=pages*40};
     return(true)
   } catch (error) {
-    alert("It seems like this user doesn't exist or he has been lost in space...");return(false)
+    alert("It seems like this user doesn't exist or he is banned/blocked");return(false)
   }
   
 }
